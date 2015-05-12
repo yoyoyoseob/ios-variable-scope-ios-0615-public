@@ -11,6 +11,7 @@
 		582BA74E405D918B2D15BCFD /* libPods-unit_tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 337C9E7A6B7BEB58F7C32D0E /* libPods-unit_tests.a */; };
 		71433E43DAF676ABE865530D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73EC7E6EE44065A590F84B9 /* Images.xcassets */; };
 		AC7B4EA7CDE350BAD5DD6C6B /* LaunchScreen.xib in Sources */ = {isa = PBXBuildFile; fileRef = 92E09BD7249CA271D7494810 /* LaunchScreen.xib */; };
+		BD8D6C6D1B0246BF0050D551 /* FISAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8D6C6C1B0246BF0050D551 /* FISAppDelegateSpec.m */; };
 		BE2C6E243B704111A80D68B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159E37B42326F65B42945E44 /* Foundation.framework */; };
 		FAA2F7FC91D4CFF86218D41C /* FISAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 08219DDAE5544565B7E501CF /* FISAppDelegate.m */; };
 		FFCB57DE3EFE5C175AB19509 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB9D6AED74BE8B3465A198 /* main.m */; };
@@ -40,6 +41,7 @@
 		95BC26B75865BF8BCFB49CCC /* ios-variable-scope-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ios-variable-scope-Info.plist"; sourceTree = "<group>"; };
 		A1F775C0E1551DE2D3208F77 /* Main.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B3935D48E058D7A1A3087CF1 /* UnitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
+		BD8D6C6C1B0246BF0050D551 /* FISAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISAppDelegateSpec.m; sourceTree = "<group>"; };
 		C73EC7E6EE44065A590F84B9 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EC4011D0AC1813557180ED68 /* FISAppDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FISAppDelegate.h; sourceTree = "<group>"; };
 		FAAD1356B82656C7B6587243 /* Pods-unit_tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unit_tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-unit_tests/Pods-unit_tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		D8B95DC55AB24F0BAD1E6943 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				BD8D6C6C1B0246BF0050D551 /* FISAppDelegateSpec.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8D6C6D1B0246BF0050D551 /* FISAppDelegateSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

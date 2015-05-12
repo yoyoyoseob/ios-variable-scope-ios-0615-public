@@ -12,4 +12,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+-(NSMutableArray *)arrayByAddingString:(NSString *)string toArray:(NSMutableArray *)array;
+
+-(NSUInteger)countOfStringsInAllCapsInArray:(NSArray *)array;
+
+-(void)removeAllElementsFromArray:(NSMutableArray *)array;
+
 @end
