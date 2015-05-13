@@ -8,7 +8,7 @@ The ins and outs of scope vary dramatically from language to language. Luckily O
 
 # The rules
 
-Essentially there are five rules of scope in Objective-C:
+Essentially there are four rules of scope in Objective-C:
 
 1. Scopes inherit from their parent scope.
 
@@ -45,16 +45,7 @@ Essentially there are five rules of scope in Objective-C:
     NSLog(@"After the loop, i is %lu", i);  // But not here! Compiler error.
     ```
 
-4. Within a scope, variables become available only after they are declared.
-
-    ```objc
-    if(2 < 4) {
-        i = 2;  // Compiler error
-        NSInteger i;
-    }
-    ```
-
-5. Code outside of a scope (e.g., at the top of a file) is available across the whole file. This includes definitions of classes and methods, and the contents of `#import`ed things.
+4. Code outside of a scope (e.g., at the top of a file) is available across the whole file. This includes definitions of classes and methods, and the contents of `#import`ed things.
 
 
 Classes have a few small additions, most of which you've already seen:
@@ -77,7 +68,7 @@ if(x > 1) {
 NSLog(@“x after the if statement: %d”, x);  // prints 2
 ```
 
-It worked! Re-declaring a variable already defined in a parent scope is called **shadowing**. Shadowing can be dangerous if one part of your code was expecting the outer scope’s value (or type!) for the variable name. It's also confusing. You will probably get a compiler warning if you shadow a variable. Avoid it if possible.
+It worked! Re-declaring a variable already defined in a parent scope is called **shadowing**. Shadowing is dangerous and confusing. If one part of your code was expecting the outer scope’s value (or type!) for the variable name -- well, bad things will happen. You will probably get a compiler warning if you shadow a variable. **Don't do this.**
 
 Note though that shadowing is only possible with variables from *outer* scopes. Trying to redefine a variable in the same scope is an error:
 
@@ -94,10 +85,10 @@ NSLog(@"second x: %d", x);
 We can view method arguments as a way to get values from one scope into the scope of another function. Let's look at how arguments and scope interact:
 
 ```objc
--(NSInteger)squareOfInteger:(NSInteger)x
+-(NSInteger)squareOfInteger:(NSInteger)anInteger
 {
-     x = x * x;  // a slightly weird, but legal thing — you can use arguments as any other variable. but what does it mean?
-     return x;  // returns 25
+     anInteger = anInteger * anInteger;  // a slightly weird, but legal thing — you can use arguments as any other variable. but what does it mean?
+     return anInteger;  // returns 25
 }
 
 -(void)main
@@ -108,7 +99,7 @@ We can view method arguments as a way to get values from one scope into the scop
 }
 ```
 
-`squareOfInteger` has its own scope (curly braces -- rule #2!). It also does not inherit `main`’s scope (they’re not nested, and couldn’t be). So, the `x` in `squareOfInteger` is effectively a totally different thing than the `x` in `main`. Its value is assigned by the the act of passing it as an argument.
+`squareOfInteger` has its own scope (curly braces -- rule #2!). It also does not inherit `main`’s scope (they’re not nested, and couldn’t be). So, `anInteger` in `squareOfInteger` is effectively a totally different thing than the `x` in `main`. Its value is assigned by the the act of passing it as an argument.
 
 This is **"pass by value”** — all we transmit when we call a method is the *value* of the variable we pass. Methods can change the value of the argument, but the code has no way to relate that value back to the original variable at the call site. So, `x` is still 5 at the end of `main`.
 
@@ -156,13 +147,13 @@ Do you think `-removeAllElementsFromArray:` works as expected?
 
 ### Pointers
 
-*(This section has no real bearing on the lab, but if you ever see two asterisks in a data type, or a primitive type with an asterisk, come back here as a jumping-off point.)*
+*(This section has no real bearing on the lab, but if you ever see two asterisks in a data type, or a primitive type with an asterisk, come back here as a jumping-off point. This gets a bit more advanced, so if it doesn't entirely make sense right now just move on to the assignment.)*
 
 If you want to mutate primitives from a function, well… you need a pointer to the primitive. It's the same deal as objects — a value that is a reference to a primitive. The array block methods that have `BOOL *stop` arguments are [an example](https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/index.html#//apple_ref/occ/instm/NSArray/indexesOfObjectsPassingTest:).
 
 And if you want to really reassign an object parameter? Pointers to pointers. `NSError **` arguments are the only time you're likely to see these.
 
-You should very rarely have to deal with things like those. 99% of the time you do, it will be the `NSError **` case, which you can just treat as an opaque pattern if you don’t feel like learning the ins and outs of pointers. They’re incredibly powerful but frequently confusing and error-prone. The good news is that if you stick within the Objective-C world of classes and methods, you’ll rarely have to deal with them except in name-only.
+You should very rarely have to deal with things like those. 99% of the time you do, it will be the `NSError **` or `BOOL *` case, which you can just treat as opaque patterns if you don’t feel like learning the ins and outs of pointers. They’re incredibly powerful but frequently confusing and error-prone. The good news is that if you stick within the Objective-C world of classes and methods, you’ll rarely have to deal with them except in name only.
 
 
 # Assignment:
